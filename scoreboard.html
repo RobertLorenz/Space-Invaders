@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Toplista</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1 class="ana">Játékosok:</h1>
+
+<script>
+  output();
+  function output() {
+    let data = []
+    for (let i = 0; i < localStorage.length; i++)
+      data[i] = [localStorage.key(i), parseInt(localStorage.getItem(localStorage.key(i)))]
+    data.sort(function (a, b) {
+      return b[1] - a[1]
+    });
+
+    let ul = document.createElement("ul")
+    for (let act_data of data.keys()) {
+      if (act_data < 10) {
+        let li = document.createElement("li")
+        li.innerHTML = "Név: " + data[act_data][0] + " ,  Pontszám: " + data[act_data][1];
+        document.body.appendChild(li)
+      }
+    }
+    document.body.appendChild(ul);
+  }
+
+</script>
+<h1 class="bd"><a href="index.html">Új játék</a> </h1>
+</body>
+</html>
